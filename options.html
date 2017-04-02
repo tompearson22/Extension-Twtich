@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" type="image/x-icon" href="icon.png" />
+<style>
+	#status{
+		background-color: yellow;
+		width: 100px;
+		height: 15px;
+		margin-top:10px;
+		margin-bottom:10px;
+		opacity: 0;
+	}
+</style>
+	<script src="jquery-3.2.0.min.js"></script>
+	<title>Twitch Extension Options</title>
+</head>
+<body>
+
+<form>
+	Username:<br>
+	<input type="text" id="usernameField"/> 	
+</form>
+
+<br>
+
+Select whether you would like to look at channels you follow or popular streams.
+<br>
+<form action="" id="radiobuttons">
+  <input type="radio" name="option" value="following" checked> Following<br>
+  <input type="radio" name="option" value="popular"> Popular<br>
+</form>
+
+<br>
+
+If 'Popular' has been selected: 
+<br>
+
+Category of game: 
+<select id="category">
+ <option value="Most Popular">Most Popular</option>
+</select>
+
+
+<br>
+<br>
+
+How many results: 
+<select id="numberOfTiles">
+	<option value="3">3</option>
+	<option value="6">6</option>
+	<option value="9">9</option>
+	<option value="12">12</option>
+	<option value="15">15</option>
+	<option value="18">18</option>
+	<option value="21">21</option>
+</select>
+
+<br>
+<br>
+Language:
+<select id="language">
+ <option value="">All</option>
+ <option value="&language=en">English</option>
+</select>
+
+<div id="status">Options saved.</div>
+<br>
+<button id="save">Save</button>
+
+<script src="options.js"></script>
+
+</body>
+</html>
