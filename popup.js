@@ -84,19 +84,22 @@ $(document).ready(function(){
       //console.log(data.streams[stream].channel.url);
       var channelLink = data.streams[stream].channel.url;
       var imageSource = data.streams[stream].channel.logo;
+      if(data.streams[stream].channel.logo === null){//if the user has not set their profile picture
+        imageSource = 'https://static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_70x70.png'
+      }
       var insideText = data.streams[stream].channel.display_name;
       var viewrsText = data.streams[stream].viewers;
-      var codeStr = "<a href=\"" + channelLink + "\"><div class=\"tile\"><img src=\"" + imageSource + "\"><p class=\"text\">" + insideText + "</p><p class=\"views\">" + viewrsText + "</p></div></a>";
+      var codeStr = "<a href=\"" + channelLink + "\"><div class=\"tile\"><img src=\"" + imageSource + "\"><p class=\"text\">" + insideText + "</p></div></a>";
       $("#container").append(codeStr);
-      $("img").hover(function(){
-        $(this).css({"border-radius": "25%", "opacity":"1", "z-index":"100"});
-        $(this).parent().find('.text').css({"visibility":"hidden"});
-        $(this).parent().find(".views").css("visibility","visible");
+      $(".tile").hover(function(){
+        $(this).css({"border-radius": "25%"});
+        $(this).find('img').css({"border-radius": "25%", "opacity":"1", "z-index":"100"});
+        $(this).parent().find('.text').css({"opacity":"1"});
         //console.log($(this).find(".views"));
       },function(){
-        $(this).css({"border-radius": "50%", "opacity":"0.75", "z-index":"0"});
-        $(this).parent().find('.text').css({"visibility":"visible"});
-        $(this).parent().find(".views").css("visibility","hidden");
+        $(this).css({"border-radius": "50%"});
+        $(this).find('img').css({"border-radius": "50%", "opacity":"0.75", "z-index":"0"});
+        $(this).parent().find('.text').css({"opacity":"0"});
       });
     }
 
@@ -175,25 +178,28 @@ var flagasdf = true;
       var channelLink = data.stream.channel.url;
       //console.log(data.stream.channel.url);
       var imageSource = data.stream.channel.logo;
+      if(imageSource === null){
+        imageSource = 'https://static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_70x70.png'
+      }
       var insideText = data.stream.channel.display_name;
       var codeStr = "<a href=\"" + channelLink + "\"><div class=\"tile\"><img src=\"" + imageSource + "\"><p class=\"text\">" + insideText + "</p></div></a>";
       //console.log(codeStr);
       $("#container").append(codeStr);
-      $("img").hover(function(){
-        $(this).css({"border-radius": "25%", "opacity":"1", "z-index":"100"});
-        $(this).parent().find('.text').css({"visibility":"hidden"});
-        $(this).parent().find(".views").css("visibility","visible");
+      $(".tile").hover(function(){
+        $(this).css({"border-radius": "25%"});
+        $(this).find('img').css({"border-radius": "25%", "opacity":"1", "z-index":"100"});
+        $(this).parent().find('.text').css({"opacity":"1"});
         //console.log($(this).find(".views"));
       },function(){
-        $(this).css({"border-radius": "50%", "opacity":"0.75", "z-index":"0"});
-        $(this).parent().find(".views").css("visibility","hidden");
-        $(this).parent().find('.text').css({"visibility":"visible"});
+        $(this).css({"border-radius": "50%"});
+        $(this).find('img').css({"border-radius": "50%", "opacity":"0.75", "z-index":"0"});
+        $(this).parent().find('.text').css({"opacity":"0"});
       });
 
       
 
     }
-    if (counter == 0 && (counter == (followingArray.length))){ // should this be -1 or not?
+    if (counter == 0){ // should this be -1 or not?
       $('#container').css("min-width","220px");
       $('#noFollowing').css("visibility","visible");
     }
