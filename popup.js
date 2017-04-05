@@ -79,6 +79,7 @@ $(document).ready(function(){
 
   function handleData(data){
     console.log(data);
+    $('#container').css("min-width","340px");
     for (var stream in data.streams){
       //console.log(data.streams[stream].channel.url);
       var channelLink = data.streams[stream].channel.url;
@@ -89,10 +90,12 @@ $(document).ready(function(){
       $("#container").append(codeStr);
       $("img").hover(function(){
         $(this).css({"border-radius": "25%", "opacity":"1", "z-index":"100"});
+        $(this).parent().find('.text').css({"visibility":"hidden"});
         $(this).parent().find(".views").css("visibility","visible");
         //console.log($(this).find(".views"));
       },function(){
         $(this).css({"border-radius": "50%", "opacity":"0.75", "z-index":"0"});
+        $(this).parent().find('.text').css({"visibility":"visible"});
         $(this).parent().find(".views").css("visibility","hidden");
       });
     }
@@ -107,7 +110,7 @@ $(document).ready(function(){
   function getData2(){
     console.log("https://api.twitch.tv/kraken/users/" + usernameToSet + "/follows/channels?limit=100");
     if (usernameToSet == ""){
-      $('#noFollowing').css("visibility","visible").html("Please right click on the extension and select options to input your username.");
+      $('#noFollowing').css("visibility","visible").html("Please right click on the extension icon and select options to input your username.");
 
     }
     return $.ajax({
@@ -122,10 +125,12 @@ $(document).ready(function(){
     });
   }
 
+  var followingArray = new Array;
+
   function handleData2(data){
     console.log(data);
     $('h3').append("Following");
-    var followingArray = new Array;
+    followingArray = [];
     for(var i in data.follows){
       var usernameGot = (data.follows[i].channel.url).split('twitch.tv/')[1];
       //console.log((data.follows[i].channel.url).split('twitch.tv/')[1]);
@@ -152,6 +157,7 @@ $(document).ready(function(){
 
 
 var counter =0;
+var flagasdf = true;
 
   function handleData3(data){    
     if(data.stream != null){
@@ -175,16 +181,21 @@ var counter =0;
       $("#container").append(codeStr);
       $("img").hover(function(){
         $(this).css({"border-radius": "25%", "opacity":"1", "z-index":"100"});
+        $(this).parent().find('.text').css({"visibility":"hidden"});
         $(this).parent().find(".views").css("visibility","visible");
         //console.log($(this).find(".views"));
       },function(){
         $(this).css({"border-radius": "50%", "opacity":"0.75", "z-index":"0"});
         $(this).parent().find(".views").css("visibility","hidden");
+        $(this).parent().find('.text').css({"visibility":"visible"});
       });
 
+      
+
     }
-    if (counter == 0){
-        $('#noFollowing').css("visibility","visible");
+    if (counter == 0 && (counter == (followingArray.length))){ // should this be -1 or not?
+      $('#container').css("min-width","220px");
+      $('#noFollowing').css("visibility","visible");
     }
   }
 
@@ -193,7 +204,7 @@ var counter =0;
 
   setTimeout(function(){
     //console.log(whattodo);
-    if(whattodo == 'following'){
+    if(whattodo == true){
       getData2().done(handleData2);
     } else {
       getData().done(handleData);

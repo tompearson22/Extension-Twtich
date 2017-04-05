@@ -5,11 +5,14 @@
 <style>
 	#status{
 		background-color: yellow;
-		width: 100px;
-		height: 15px;
+		display:inline-block;
+		height: 100%;
 		margin-top:10px;
 		margin-bottom:10px;
 		opacity: 0;
+	}
+	body{
+		font-size: 110%;
 	}
 </style>
 	<script src="jquery-3.2.0.min.js"></script>
@@ -21,14 +24,12 @@
 	Username:<br>
 	<input type="text" id="usernameField"/> 	
 </form>
-
-<br>
-
-Select whether you would like to look at channels you follow or popular streams.
 <br>
 <form action="" id="radiobuttons">
-  <input type="radio" name="option" value="following" checked> Following<br>
-  <input type="radio" name="option" value="popular"> Popular<br>
+  <input type="checkbox" id="enableNotifications" value="enable">Enable Notifications<br><br>
+  Select whether you would like to look at channels you follow or popular streams.<br>
+  <input type="radio" name="option" value="following" id="first"> Following<br>
+  <input type="radio" name="option" value="popular" id="second"> Popular<br><br>
 </form>
 
 <br>
@@ -63,6 +64,7 @@ Language:
  <option value="">All</option>
  <option value="&language=en">English</option>
 </select>
+<br>
 
 <div id="status">Options saved.</div>
 <br>

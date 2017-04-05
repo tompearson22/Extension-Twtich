@@ -1,11 +1,12 @@
 body {
         font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
         font-size: 100%;
+        background-color:#f2f2f2;
 }
 
 
 #container {
-  min-width: 340px;
+  min-width: px;
   max-width: 340px;
   height: 100%;
   overflow:hidden;
@@ -42,6 +43,10 @@ img{
   max-width: 100px;
   white-space: nowrap;
   overflow: hidden;
+  margin-left: 5px;
+  margin-right: 5px;
+  max-width: 90%;
+  color:black;
 }
 
 .views{
