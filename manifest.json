@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
-  "name": "Twitch Extension",
+  "name": "Better Twitch Follows",
   "description": "Displays following and notifications without having to be on the Twitch website.",
   "version": "1.0",
   "options_page": "options.html",
